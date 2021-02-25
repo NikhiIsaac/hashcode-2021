@@ -24,15 +24,14 @@ lines.slice(1, 1+S).forEach((street, i) => {
     streets[name] = {
         B: Number(B),
         E: Number(E),
-        L: Number(L)
+        L: Number(L),
+        name: name
     }
 })
 
 // Car's Path
 // [number_of_streets, name...]
 const cp = lines.slice(1+S, 1+S+V).map(e => e.split(" ").slice(1))
-
-console.log(streets, cp);
 
 module.exports = {
     D, I, S, V, F, streets, cp
