@@ -1,8 +1,8 @@
 const fs = require("fs")
 
-const filepath = "./cases/a.txt";
+const filepath = "c.txt";
 
-const data = fs.readFileSync(filepath, "utf-8");
+const data = fs.readFileSync("./cases/" + filepath, "utf-8");
 
 const lines = data.split("\n");
 
@@ -34,5 +34,5 @@ lines.slice(1, 1+S).forEach((street, i) => {
 const cp = lines.slice(1+S, 1+S+V).map(e => e.split(" ").slice(1))
 
 module.exports = {
-    D, I, S, V, F, streets, cp
+    D, I, S, V, F, streets, cp, filepath
 }

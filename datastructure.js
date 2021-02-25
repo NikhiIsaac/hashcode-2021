@@ -14,11 +14,6 @@ for (const streetname in input.streets) {
     intersections[street.E].end.push(street.name)
 }
 
-// let cars = input.cp.map(path => path.map(name => input.streets[name]));
-
-// cars[0].path = [..........]
-// cars[0].t
-
 let cars = [];
 for(let i = 0; i < input.V; i++) {
     cars[i] = {
@@ -27,4 +22,14 @@ for(let i = 0; i < input.V; i++) {
     }
 }
 
-module.exports = { intersections, cars }
+let liveStreet = {}
+cars.forEach((car, i) => {
+    if(liveStreet[car.path[0]]) {
+        liveStreet[car.path[0]].push(i)
+    } else {
+        liveStreet[car.path[0]] = [i]
+    }
+})
+
+// console.log(liveStreet, intersections);
+module.exports = { intersections, cars, liveStreet, ...input }
