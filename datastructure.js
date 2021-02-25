@@ -1,31 +1,30 @@
 const input = require("./input.js");
 
-// console.log(input);
+// intersections
+let intersections = [];
+for(let i = 0; i < input.I; i++) {
+    intersections[i] = {
+        start: [],
+        end: []
+    }
+}
+for (const streetname in input.streets) {
+    const street = input.streets[streetname];
+    intersections[street.B].start.push(street.name);
+    intersections[street.E].end.push(street.name)
+}
 
-const intersections = new Array(input.I);
+// let cars = input.cp.map(path => path.map(name => input.streets[name]));
 
-for (const streetName in input.streets) {
-    if (Object.hasOwnProperty.call(input.streets, streetName)) {
-        const street = input.streets[streetName];
-        if (intersections[street.B]) {
-            intersections[street.B].start.push(street.name)
-        } else {
-            intersections[street.B] = {
-                start: [street.name]
-            }
-        }
-        if (intersections[street.E]) {
-            intersections[street.E].end.push(street.name)
-        } else {
-            intersections[street.E] = {
-                end: [street.name]
-            }
-        }
-        // intersections[street.E].end.push(street.name)
+// cars[0].path = [..........]
+// cars[0].t
+
+let cars = [];
+for(let i = 0; i < input.V; i++) {
+    cars[i] = {
+        path: input.cp[i],
+        time: input.cp[i].map(name => input.streets[name].L)
     }
 }
 
-// for (const street of input.streets) {
-// }
-
-console.log(intersections);
+module.exports = { intersections, cars }
